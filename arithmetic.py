@@ -7,6 +7,7 @@ foundation for the calculator_tools package.
 from .exceptions import (
     DivisionByZeroError,       # raised when dividing by zero
     InvalidInputError,         # raised when inputs are not numbers
+    InvalidOperationError,     # raised for invalid/unknown operations
     UnsupportedOperationError, # raised for unknown operations
 )
 
@@ -116,5 +117,5 @@ def calculate(operator, a, b=None):
         "%": modulo,
     }
     if op not in operations:
-        raise UnsupportedOperationError(f"Unsupported operation: {operator}")
+        raise InvalidOperationError(f"Invalid operation: {operator}")
     return operations[op](a, b)

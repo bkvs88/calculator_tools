@@ -35,6 +35,7 @@ from .exceptions import (
     CalculatorError,            # base class for all package errors
     DivisionByZeroError,        # division/modulo by zero
     InvalidInputError,          # non-numeric input
+    InvalidOperationError,      # invalid/unknown operation in dispatcher
     UnsupportedOperationError,  # unknown operation, unit, or category
     EmptyDataError,             # missing/empty dataset
 )
@@ -65,6 +66,7 @@ __all__ = [
     "CalculatorError",
     "DivisionByZeroError",
     "InvalidInputError",
+    "InvalidOperationError",
     "UnsupportedOperationError",
     "EmptyDataError",
 ]

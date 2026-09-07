@@ -28,3 +28,7 @@ class UnsupportedOperationError(CalculatorError):
 
 class EmptyDataError(CalculatorError):
     """Raised when an empty dataset is provided where data is required."""
+
+
+class InvalidOperationError(CalculatorError):
+    """Raised when an invalid operation is attempted on the calculator."""

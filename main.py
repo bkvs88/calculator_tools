@@ -20,6 +20,7 @@ from calculator_tools import (
     subtract,                   # a - b
     multiply,                   # a * b
     divide,                     # a / b
+    calculate,                  # dispatch on a string operator
     percentage,                 # part as a % of whole
     power,                      # base ** exponent
     average,                    # arithmetic mean of data
@@ -28,6 +29,7 @@ from calculator_tools import (
     convert_unit,               # convert length/mass units
     DivisionByZeroError,        # divide/modulo by zero
     InvalidInputError,          # non-numeric input
+    InvalidOperationError,      # invalid/unknown operation in dispatcher
     UnsupportedOperationError,  # unknown operation/unit
     EmptyDataError,             # empty/missing dataset
 )
@@ -64,12 +66,13 @@ def demo():
         ("non-numeric", lambda: add("a", 1)),
         ("unsupported op", lambda: convert_unit(1, "parsec", "km", "length")),
         ("empty data", lambda: average([])),
+        ("invalid operation", lambda: calculate("**invalid**", 1, 2)),
     ]:
         try:
             func()
             # If we reach here, the call unexpectedly did not raise.
             print(f"{label:<20} -> no error (unexpected!)")
-        except (DivisionByZeroError, InvalidInputError, UnsupportedOperationError, EmptyDataError) as e:
+        except (DivisionByZeroError, InvalidInputError, InvalidOperationError, UnsupportedOperationError, EmptyDataError) as e:
             print(f"{label:<20} -> {type(e).__name__}: {e}")
 
 
